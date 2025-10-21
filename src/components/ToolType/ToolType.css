@@ -1,0 +1,9 @@
+.tool-type {
+  display: inline-block;
+  background: #667eea;
+  color: white;
+  padding: 5px 10px;
+  border-radius: 5px;
+  font-size: 0.9em;
+  margin: 0 5px;
+}

@@ -1,0 +1,14 @@
+.agenda-item {
+  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+  margin: 15px 0;
+  padding: 20px 30px;
+  border-radius: 10px;
+  font-size: 1.5em;
+  font-weight: 500;
+  transition: transform 0.3s ease;
+  list-style: none;
+}
+
+.agenda-item:hover {
+  transform: translateX(10px);
+}

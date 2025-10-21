@@ -1,0 +1,9 @@
+.navigation {
+  position: fixed;
+  bottom: 30px;
+  left: calc(50% + 30px);
+  transform: translateX(-50%);
+  display: flex;
+  gap: 20px;
+  z-index: 100;
+}

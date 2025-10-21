@@ -1,0 +1,27 @@
+.dev-tools-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 20px 0;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.dev-tools-table th {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  padding: 15px;
+  text-align: left;
+  font-size: 1.1em;
+}
+
+.dev-tools-table td {
+  padding: 12px 15px;
+  border-bottom: 1px solid #eee;
+  font-size: 1em;
+  color: #555;
+}
+
+.dev-tools-table tr:hover {
+  background: #f8f9fa;
+}

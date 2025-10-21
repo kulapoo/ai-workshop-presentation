@@ -1,0 +1,792 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Developer Tools</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            overflow: hidden;
+            color: #333;
+        }
+
+        .presentation-container {
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .slide {
+            width: 90%;
+            max-width: 1200px;
+            height: 85vh;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            padding: 60px;
+            display: none;
+            overflow-y: auto;
+            animation: slideIn 0.5s ease-out;
+        }
+
+        .slide.active {
+            display: block;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateX(100px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .slide-title {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-size: 3.5em;
+            font-weight: 900;
+            margin-bottom: 40px;
+            text-align: center;
+        }
+
+        .slide-subtitle {
+            font-size: 2.5em;
+            font-weight: 700;
+            margin-bottom: 30px;
+            color: #667eea;
+        }
+
+        h1 {
+            font-size: 4em;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        h2 {
+            font-size: 2.5em;
+            color: #667eea;
+            margin-bottom: 25px;
+            margin-top: 35px;
+        }
+
+        h3 {
+            font-size: 1.8em;
+            color: #764ba2;
+            margin-bottom: 20px;
+            margin-top: 30px;
+        }
+
+        p, li {
+            font-size: 1.3em;
+            line-height: 1.8;
+            color: #555;
+            margin-bottom: 15px;
+        }
+
+        ul {
+            padding-left: 30px;
+            margin-bottom: 20px;
+        }
+
+        .agenda-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .agenda-list li {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            margin: 15px 0;
+            padding: 20px 30px;
+            border-radius: 10px;
+            font-size: 1.5em;
+            font-weight: 500;
+            transition: transform 0.3s ease;
+        }
+
+        .agenda-list li:hover {
+            transform: translateX(10px);
+        }
+
+        .navigation {
+            position: fixed;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 20px;
+            z-index: 1000;
+        }
+
+        .nav-btn {
+            padding: 12px 24px;
+            background: white;
+            border: 2px solid #667eea;
+            border-radius: 50px;
+            font-size: 1em;
+            font-weight: 600;
+            color: #667eea;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .nav-btn:hover {
+            background: #667eea;
+            color: white;
+            transform: scale(1.05);
+        }
+
+        .slide-number {
+            position: absolute;
+            top: 30px;
+            right: 30px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 50px;
+            font-weight: 600;
+        }
+
+        .disclaimer {
+            background: #fff3cd;
+            border-left: 5px solid #ffc107;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 5px;
+        }
+
+        .disclaimer p {
+            color: #856404;
+            margin: 5px 0;
+        }
+
+        .spectrum-container {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            padding: 30px;
+            border-radius: 15px;
+            margin: 20px 0;
+        }
+
+        .spectrum-item {
+            margin: 25px 0;
+            padding: 20px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .spectrum-item h3 {
+            color: #667eea;
+            margin-bottom: 10px;
+        }
+
+        .spectrum-item p {
+            font-style: italic;
+            color: #888;
+        }
+
+        .code-block {
+            background: #2d2d2d;
+            color: #f8f8f2;
+            padding: 20px;
+            border-radius: 10px;
+            font-family: 'Courier New', monospace;
+            margin: 20px 0;
+            overflow-x: auto;
+        }
+
+        .technique-box {
+            background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%);
+            padding: 25px;
+            border-radius: 15px;
+            margin: 20px 0;
+        }
+
+        .checklist {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+        }
+
+        .checklist li {
+            list-style: none;
+            padding: 10px 0;
+            border-bottom: 1px solid #dee2e6;
+        }
+
+        .checklist li:before {
+            content: "☐ ";
+            font-size: 1.5em;
+            margin-right: 10px;
+            color: #667eea;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        th {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 15px;
+            text-align: left;
+            font-size: 1.1em;
+        }
+
+        td {
+            padding: 12px 15px;
+            border-bottom: 1px solid #eee;
+            font-size: 1em;
+        }
+
+        tr:hover {
+            background: #f8f9fa;
+        }
+
+        .center-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100%;
+            text-align: center;
+        }
+
+        .tagline {
+            font-size: 1.8em;
+            color: #888;
+            margin-top: 20px;
+            font-style: italic;
+        }
+
+        .prompt-example {
+            background: #f8f9fa;
+            border: 2px solid #dee2e6;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+
+        .prompt-example h4 {
+            color: #667eea;
+            margin-bottom: 15px;
+        }
+
+        .framework-section {
+            background: linear-gradient(135deg, #fff 0%, #f8f9fa 100%);
+            padding: 25px;
+            border-radius: 15px;
+            margin: 20px 0;
+            border: 2px solid #e9ecef;
+        }
+
+        .tool-type {
+            display: inline-block;
+            background: #667eea;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 0.9em;
+            margin: 0 5px;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin: 30px 0;
+        }
+
+        .stat-card {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 3em;
+            font-weight: 900;
+            margin-bottom: 10px;
+        }
+
+        .stat-label {
+            font-size: 1.2em;
+            opacity: 0.9;
+        }
+    </style>
+</head>
+<body>
+    <div class="presentation-container">
+        <div class="slide-number" id="slideNumber">1 / 14</div>
+
+        <div class="slide active" id="slide1">
+            <div class="center-content">
+                <h1>AI Developer Tools</h1>
+                <p class="tagline">Building the Future with Intelligent Systems</p>
+                <div class="stats-grid" style="margin-top: 60px;">
+                    <div class="stat-card">
+                        <div class="stat-number">92%</div>
+                        <div class="stat-label">Companies using AI</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">10x</div>
+                        <div class="stat-label">Developer Productivity</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">2025</div>
+                        <div class="stat-label">The Year of Agents</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="slide" id="slide2">
+            <h2 class="slide-title">Agenda</h2>
+            <ul class="agenda-list">
+                <li>📋 Introduction</li>
+                <li>🤖 Agentic AI</li>
+                <li>💡 Prompt Engineering</li>
+                <li>🛠️ Tools</li>
+                <li>❓ Q&A</li>
+                <li>📚 Resources | Links</li>
+            </ul>
+            <div class="disclaimer">
+                <p><strong>⚠️ Disclaimer:</strong></p>
+                <p>• Security considerations apply</p>
+                <p>• Sharing common tools and practices</p>
+                <p>• AI is still evolving rapidly</p>
+            </div>
+        </div>
+
+        <div class="slide" id="slide3">
+            <h2 class="slide-title">Rise of AI Engineering</h2>
+            <div class="framework-section">
+                <h3>What is AI Engineering?</h3>
+                <p style="font-size: 1.5em; color: #667eea; font-weight: 600;">
+                    "Building applications on top of AI foundation models - GPT, Anthropic, Gemini, etc."
+                </p>
+            </div>
+            <div class="spectrum-container">
+                <div class="spectrum-item">
+                    <h3>AI Engineer VS ML Engineer</h3>
+                    <p>Focus on application development vs model training</p>
+                </div>
+                <div class="spectrum-item">
+                    <h3>New Workflow Rewards</h3>
+                    <p>Rapid iteration and experimentation</p>
+                </div>
+                <div class="spectrum-item">
+                    <h3>Industry Impact</h3>
+                    <p>Transforming how we build software</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="slide" id="slide4">
+            <h2 class="slide-title">What is Agentic AI?</h2>
+            <p style="font-size: 1.5em; margin-bottom: 30px;">
+                Agents can handle tasks with increasing independence, operating within defined boundaries and under human oversight.
+            </p>
+            <div class="technique-box">
+                <h3>Key Capabilities:</h3>
+                <ul>
+                    <li><strong>Make judgment calls</strong> within parameters</li>
+                    <li><strong>Adapt approach</strong> based on situation</li>
+                    <li><strong>Take initiative</strong> rather than waiting for instructions</li>
+                    <li><strong>Problem-solve independently</strong> when encountering obstacles</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="slide" id="slide5">
+            <h2 class="slide-title">AI Autonomy Spectrum</h2>
+            <div class="spectrum-container">
+                <div class="spectrum-item">
+                    <h3>1. Chatbot</h3>
+                    <p>Basic Q&A, follows scripts - Customer service bots</p>
+                </div>
+                <div class="spectrum-item">
+                    <h3>2. AI Assistant</h3>
+                    <p>Conversational, context-aware - Claude, ChatGPT</p>
+                </div>
+                <div class="spectrum-item">
+                    <h3>3. AI Copilot</h3>
+                    <p>Works alongside in workflows - GitHub Copilot</p>
+                </div>
+                <div class="spectrum-item">
+                    <h3>4. AI Agent</h3>
+                    <p>Independent task completion - Claude Code, Auto-GPT</p>
+                </div>
+                <div class="spectrum-item">
+                    <h3>5. Autonomous AI</h3>
+                    <p>Fully independent operations - Self-driving cars</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="slide" id="slide6">
+            <h2 class="slide-title">Agent AI Components</h2>
+            <div class="framework-section">
+                <h3>🌍 1. Environment</h3>
+                <p>Task context and available tools</p>
+            </div>
+            <div class="framework-section">
+                <h3>🔧 2. Tools</h3>
+                <ul>
+                    <li>Web search</li>
+                    <li>Code execution</li>
+                    <li>Database queries</li>
+                    <li>API calls</li>
+                </ul>
+            </div>
+            <div class="framework-section">
+                <h3>🧠 3. Planner</h3>
+                <p>Model deciding tool usage and action sequences</p>
+            </div>
+            <div class="framework-section">
+                <h3>💾 4. Memory</h3>
+                <ul>
+                    <li><strong>Short-term:</strong> Current conversation context</li>
+                    <li><strong>Long-term:</strong> Persistent information across sessions</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="slide" id="slide7">
+            <h2 class="slide-title">AI-Assisted Development</h2>
+            <div class="spectrum-container">
+                <div class="spectrum-item">
+                    <h3>🎯 Vibe Coding</h3>
+                    <p><strong>Human-driven workflow</strong> using conversational prompts to guide AI tools</p>
+                    <p style="color: #667eea; font-weight: 600;">Human in the Loop</p>
+                </div>
+                <div class="spectrum-item">
+                    <h3>🤖 Agentic Coding</h3>
+                    <p><strong>Agent-driven architecture</strong> delegating goals to autonomous AI systems</p>
+                    <p style="color: #764ba2; font-weight: 600;">Multi-step task execution</p>
+                </div>
+            </div>
+            <div class="technique-box">
+                <h3>Demo Examples:</h3>
+                <ul>
+                    <li>Generate expense tracker from scratch</li>
+                    <li>Enhance "Experience Maldives" application</li>
+                    <li>Developer agent vs System analyst agent</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="slide" id="slide8">
+            <h2 class="slide-title">Benefits of AI Developer Tools</h2>
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-number">75%</div>
+                    <div class="stat-label">Faster Development</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">60%</div>
+                    <div class="stat-label">Fewer Bugs</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">85%</div>
+                    <div class="stat-label">Code Quality</div>
+                </div>
+            </div>
+            <div class="framework-section" style="margin-top: 30px;">
+                <h3>🚀 Productivity Benefits</h3>
+                <ul>
+                    <li><strong>Accelerated Development:</strong> Complete complex tasks in minutes instead of hours</li>
+                    <li><strong>Reduced Cognitive Load:</strong> Focus on architecture while AI handles boilerplate</li>
+                    <li><strong>24/7 Pair Programming:</strong> Always-available coding assistant</li>
+                </ul>
+            </div>
+            <div class="framework-section">
+                <h3>💡 Quality Benefits</h3>
+                <ul>
+                    <li><strong>Consistent Code Style:</strong> Maintains coding standards automatically</li>
+                    <li><strong>Built-in Best Practices:</strong> Incorporates industry patterns and conventions</li>
+                    <li><strong>Comprehensive Testing:</strong> Generate test cases and edge case scenarios</li>
+                </ul>
+            </div>
+            <div class="framework-section">
+                <h3>🎯 Business Benefits</h3>
+                <ul>
+                    <li><strong>Faster Time-to-Market:</strong> Ship features and products rapidly</li>
+                    <li><strong>Reduced Development Costs:</strong> Lower resource requirements per project</li>
+                    <li><strong>Competitive Advantage:</strong> Stay ahead with cutting-edge development practices</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="slide" id="slide9">
+            <h2 class="slide-title">Prompt Engineering Essentials</h2>
+            <div class="framework-section">
+                <h3>What is Prompt Engineering?</h3>
+                <p style="font-size: 1.4em;">Crafting instructions that guide AI models to generate desired outcomes</p>
+                <p style="color: #667eea; font-weight: 600; margin-top: 20px;">
+                    Why it matters: Cost-effective, accessible foundation before advanced techniques
+                </p>
+            </div>
+            <div class="technique-box">
+                <h3>Key Principle</h3>
+                <p style="font-size: 1.3em; font-weight: 600;">
+                    "Clarity beats complexity"
+                </p>
+                <p>Explicit instructions, relevant context, and systematic iteration produce better results than clever tricks</p>
+            </div>
+        </div>
+
+        <div class="slide" id="slide10">
+            <h2 class="slide-title">The TCREI Framework</h2>
+            <p style="text-align: center; font-size: 1.5em; color: #667eea; margin-bottom: 30px;">
+                "Thoughtfully Create Really Excellent Inputs"
+            </p>
+            <div class="framework-section">
+                <h3>📝 Task - Define What You Want</h3>
+                <ul>
+                    <li>Assign persona ("You're a marketing expert...")</li>
+                    <li>Specify output format (table, bullets, paragraphs)</li>
+                </ul>
+            </div>
+            <div class="framework-section">
+                <h3>🎯 Context - Provide Details</h3>
+                <p>Background information, goals, constraints</p>
+            </div>
+            <div class="framework-section">
+                <h3>📚 References - Show Examples</h3>
+                <p>Provide 2-5 concrete examples with clear labels</p>
+            </div>
+            <div class="framework-section">
+                <h3>✅ Evaluate - Check Output</h3>
+                <p>Accuracy, bias, relevance, consistency</p>
+            </div>
+            <div class="framework-section">
+                <h3>🔄 Iterate - Refine & Improve</h3>
+                <p>Break prompts into shorter sentences, try different phrasing</p>
+            </div>
+        </div>
+
+        <div class="slide" id="slide11">
+            <h2 class="slide-title">Core Techniques</h2>
+            <div class="technique-box">
+                <h3>Zero-Shot vs Few-Shot</h3>
+                <p><strong>Zero-Shot:</strong> "Classify sentiment: 'This exceeded expectations!'"</p>
+                <p><strong>Few-Shot:</strong> Show examples first → "Great service!" → Positive</p>
+            </div>
+            <div class="technique-box">
+                <h3>Prompt Chaining</h3>
+                <p>Link outputs: Extract → Analyze → Generate → Format</p>
+            </div>
+            <div class="technique-box">
+                <h3>Structured Output</h3>
+                <div class="code-block">
+Return format:
+&lt;analysis&gt;
+  &lt;summary&gt;...&lt;/summary&gt;
+  &lt;findings&gt;...&lt;/findings&gt;
+&lt;/analysis&gt;
+                </div>
+            </div>
+            <div class="checklist">
+                <h3>Quick Checklist:</h3>
+                <ul>
+                    <li>Clear task with persona & format?</li>
+                    <li>Sufficient context provided?</li>
+                    <li>Examples included (when helpful)?</li>
+                    <li>Ready to iterate?</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="slide" id="slide12">
+            <h2 class="slide-title">Prompt Examples</h2>
+            <div class="prompt-example">
+                <h4>❌ Bad Prompt</h4>
+                <p>"Generate a market analysis report for a new product category."</p>
+            </div>
+            <div class="prompt-example">
+                <h4>✅ Good Prompt</h4>
+                <p><strong>Parameters:</strong> Temperature: 0.9, Top p: 0.999, Max length: 5,000</p>
+                <p><strong>Prompt:</strong></p>
+                <p>Generate a comprehensive market analysis report for a new product category in the finance industry for an audience of small and medium-sized businesses (SMBs). Structure the report with:</p>
+                <ol>
+                    <li>Executive Summary</li>
+                    <li>Industry Overview</li>
+                    <li>Target Audience Analysis</li>
+                    <li>Competitive Landscape</li>
+                    <li>Product Opportunity and Recommendations</li>
+                    <li>Financial Projections</li>
+                </ol>
+                <p>The tone should be professional and tailored to SMBs.</p>
+            </div>
+        </div>
+
+        <div class="slide" id="slide13">
+            <h2 class="slide-title">AI Dev Tools</h2>
+            <div style="overflow-x: auto;">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Tool</th>
+                            <th>AI Model</th>
+                            <th>Type</th>
+                            <th>Key Features</th>
+                            <th>Free</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>MCP</strong></td>
+                            <td>Anthropic</td>
+                            <td><span class="tool-type">Protocol</span></td>
+                            <td>Tool connectivity, Context bridging</td>
+                            <td>✅</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Claude Code</strong></td>
+                            <td>Anthropic</td>
+                            <td><span class="tool-type">CLI Agent</span></td>
+                            <td>Autonomous coding, Terminal-native</td>
+                            <td>❌</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Aider</strong></td>
+                            <td>GPT-4/Claude</td>
+                            <td><span class="tool-type">CLI Agent</span></td>
+                            <td>Git integration, Pair programming</td>
+                            <td>✅*</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Continue</strong></td>
+                            <td>Any/Local</td>
+                            <td><span class="tool-type">IDE Extension</span></td>
+                            <td>Local models, Custom prompts</td>
+                            <td>✅</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Cline</strong></td>
+                            <td>Any</td>
+                            <td><span class="tool-type">VS Code Ext</span></td>
+                            <td>File operations, Shell commands</td>
+                            <td>✅</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Windsurf</strong></td>
+                            <td>Any</td>
+                            <td><span class="tool-type">IDE</span></td>
+                            <td>Cascade flows, Agent & chat modes</td>
+                            <td>✅</td>
+                        </tr>
+                        <tr>
+                            <td><strong>GitHub Copilot</strong></td>
+                            <td>OpenAI</td>
+                            <td><span class="tool-type">IDE Plugin</span></td>
+                            <td>Inline suggestions, Chat interface</td>
+                            <td>❌</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Ollama</strong></td>
+                            <td>Local Models</td>
+                            <td><span class="tool-type">Local Server</span></td>
+                            <td>Privacy-first, No internet required</td>
+                            <td>✅</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <p style="margin-top: 20px; text-align: center;">
+                <strong>Legend:</strong> ✅ Free | ✅* Free tier available | ❌ Paid only
+            </p>
+        </div>
+
+        <div class="slide" id="slide14">
+            <h2 class="slide-title">Q&A</h2>
+            <div class="center-content">
+                <div style="font-size: 5em; margin-bottom: 30px;">❓</div>
+                <h3>Questions & Discussion</h3>
+                <p style="font-size: 1.5em; margin-top: 30px;">Let's explore your questions about AI Engineering, Agentic AI, and Prompt Engineering</p>
+            </div>
+        </div>
+
+        <div class="slide" id="slide15">
+            <h2 class="slide-title">Thank You!</h2>
+            <div class="center-content">
+                <h3>Resources & Links</h3>
+                <div class="framework-section" style="margin-top: 30px;">
+                    <p>📚 Documentation & Guides</p>
+                    <p>🔗 Tool Repositories</p>
+                    <p>💡 Best Practices</p>
+                    <p>🚀 Getting Started Tutorials</p>
+                </div>
+                <p class="tagline" style="margin-top: 50px;">Ready to build with AI?</p>
+            </div>
+        </div>
+
+        <div class="navigation">
+            <button class="nav-btn" onclick="previousSlide()">← Previous</button>
+            <button class="nav-btn" onclick="nextSlide()">Next →</button>
+        </div>
+    </div>
+
+    <script>
+        let currentSlide = 1;
+        const totalSlides = 15;
+
+        function showSlide(n) {
+            const slides = document.getElementsByClassName('slide');
+            if (n > totalSlides) currentSlide = 1;
+            if (n < 1) currentSlide = totalSlides;
+
+            for (let i = 0; i < slides.length; i++) {
+                slides[i].classList.remove('active');
+            }
+
+            slides[currentSlide - 1].classList.add('active');
+            document.getElementById('slideNumber').textContent = `${currentSlide} / ${totalSlides}`;
+        }
+
+        function nextSlide() {
+            currentSlide++;
+            showSlide(currentSlide);
+        }
+
+        function previousSlide() {
+            currentSlide--;
+            showSlide(currentSlide);
+        }
+
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'ArrowRight') nextSlide();
+            if (event.key === 'ArrowLeft') previousSlide();
+        });
+
+        showSlide(currentSlide);
+    </script>
+</body>
+</html>
