@@ -2,6 +2,7 @@ import type { SlideProps } from '../../types';
 import { Slide } from '../../components/layout/Slide/Slide';
 import { StatCard } from '../../components/StatCard/StatCard';
 import { FrameworkSection } from '../../components/FrameworkSection/FrameworkSection';
+import { Rocket, Lightbulb, Target } from 'lucide-react';
 
 export const Slide08_Benefits: React.FC<SlideProps> = ({ isActive }) => {
   return (
@@ -12,7 +13,7 @@ export const Slide08_Benefits: React.FC<SlideProps> = ({ isActive }) => {
         <StatCard number="60%" label="Fewer Bugs" />
         <StatCard number="85%" label="Code Quality" />
       </div>
-      <FrameworkSection title="🚀 Productivity Benefits">
+      <FrameworkSection title={<span className="flex items-center gap-2"><Rocket size={24} /> Productivity Benefits</span>}>
         <ul>
           <li>
             <strong>Accelerated Development:</strong> Complete complex tasks in minutes instead of
@@ -27,7 +28,7 @@ export const Slide08_Benefits: React.FC<SlideProps> = ({ isActive }) => {
           </li>
         </ul>
       </FrameworkSection>
-      <FrameworkSection title="💡 Quality Benefits">
+      <FrameworkSection title={<span className="flex items-center gap-2"><Lightbulb size={24} /> Quality Benefits</span>}>
         <ul>
           <li>
             <strong>Consistent Code Style:</strong> Maintains coding standards automatically
@@ -40,7 +41,7 @@ export const Slide08_Benefits: React.FC<SlideProps> = ({ isActive }) => {
           </li>
         </ul>
       </FrameworkSection>
-      <FrameworkSection title="🎯 Business Benefits">
+      <FrameworkSection title={<span className="flex items-center gap-2"><Target size={24} /> Business Benefits</span>}>
         <ul>
           <li>
             <strong>Faster Time-to-Market:</strong> Ship features and products rapidly

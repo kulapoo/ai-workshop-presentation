@@ -3,14 +3,13 @@ import { Sidebar } from './components/layout/Sidebar/Sidebar';
 import { SlidesPage } from './pages/SlidesPage';
 import { ResourcesPage } from './pages/ResourcesPage';
 import { VideosPage } from './pages/VideosPage';
-import './App.css';
 
 function App() {
   return (
     <BrowserRouter>
-      <div className="app-container">
+      <div className="flex w-full min-h-screen">
         <Sidebar />
-        <main className="main-content">
+        <main className="flex-1 w-[calc(100vw-60px)] overflow-x-hidden">
           <Routes>
             <Route path="/" element={<Navigate to="/slides" replace />} />
             <Route path="/slides" element={<SlidesPage />} />

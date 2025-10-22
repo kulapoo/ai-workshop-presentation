@@ -1,7 +1,7 @@
 // Export all slide components
 export { Slide01_Title } from './Slide01_Title';
 export { Slide02_Agenda } from './Slide02_Agenda';
-export { Slide03_RiseOfAI } from './Slide03_RiseOfAI';
+export { Slide03_RiseOfAI } from './Slide03_Intro';
 export { Slide04_AgenticAI } from './Slide04_AgenticAI';
 export { Slide05_AutonomySpectrum } from './Slide05_AutonomySpectrum';
 export { Slide06_Components } from './Slide06_Components';

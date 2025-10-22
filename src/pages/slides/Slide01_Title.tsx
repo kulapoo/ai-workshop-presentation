@@ -6,10 +6,15 @@ export const Slide01_Title: React.FC<SlideProps> = ({ isActive }) => {
   return (
     <Slide isActive={isActive}>
       <div className="center-content">
-        <h1>AI Developer Tools</h1>
+        <h2>AI Developer Tools: Agentic Coding & Prompt Engineering</h2>
         <p className="tagline">Building the Future with Intelligent Systems</p>
         <div className="stats-grid" style={{ marginTop: '60px' }}>
-          <StatCard number="92%" label="Companies using AI" />
+          <StatCard
+            number="78%"
+            label="Companies using AI"
+            link="https://www.mckinsey.com/capabilities/mckinsey-digital/our-insights/the-state-of-ai"
+            linkLabel="McKinsey/Stanford AI Index"
+          />
           <StatCard number="10x" label="Developer Productivity" />
           <StatCard number="2025" label="The Year of Agents" />
         </div>

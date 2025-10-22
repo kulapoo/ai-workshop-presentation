@@ -3,21 +3,23 @@
 export interface StatCardProps {
   number: string;
   label: string;
+  link?: string;
+  linkLabel?: string;
 }
 
 export interface AgendaItemProps {
-  emoji: string;
+  icon: React.ReactNode;
   text: string;
 }
 
 export interface SpectrumItemProps {
-  title: string;
+  title: React.ReactNode;
   description: string;
   level?: number;
 }
 
 export interface FrameworkSectionProps {
-  title: string;
+  title: React.ReactNode;
   children: React.ReactNode;
 }
 

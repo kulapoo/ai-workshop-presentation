@@ -1,18 +1,30 @@
 import type { SlideProps } from '../../types';
 import { Slide } from '../../components/layout/Slide/Slide';
 import { PromptExample } from '../../components/PromptExample/PromptExample';
+import { X, Check } from 'lucide-react';
 
 export const Slide12_PromptExamples: React.FC<SlideProps> = ({ isActive }) => {
   return (
     <Slide isActive={isActive}>
       <h2 className="slide-title">Prompt Examples</h2>
-      <PromptExample title="❌ Bad Prompt" isGood={false}>
+      <PromptExample
+        title={
+          <span className="flex items-center gap-2">
+            <X size={24} /> Bad Prompt
+          </span>
+        }
+        isGood={false}
+      >
         <p>"Generate a market analysis report for a new product category."</p>
       </PromptExample>
-      <PromptExample title="✅ Good Prompt" isGood={true}>
-        <p>
-          <strong>Parameters:</strong> Temperature: 0.9, Top p: 0.999, Max length: 5,000
-        </p>
+      <PromptExample
+        title={
+          <span className="flex items-center gap-2">
+            <Check size={24} /> Good Prompt
+          </span>
+        }
+        isGood={true}
+      >
         <p>
           <strong>Prompt:</strong>
         </p>

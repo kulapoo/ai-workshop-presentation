@@ -1,45 +1,54 @@
-/* Global styles */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+@import "tailwindcss";
+
+@layer base {
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  html,
+  body,
+  #root {
+    @apply w-full h-full m-0 p-0;
+  }
+
+  body {
+    @apply font-sans overflow-hidden text-gray-800 min-h-screen;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  }
+
+  h1 {
+    @apply text-6xl m-0;
+  }
+
+  h2 {
+    @apply text-4xl m-0;
+  }
+
+  h3 {
+    @apply text-3xl m-0;
+  }
+
+  button {
+    @apply border-none outline-none;
+    font-family: inherit;
+  }
 }
 
-body {
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  overflow: hidden;
-  color: #333;
-  margin: 0;
-  min-height: 100vh;
-}
+@layer utilities {
+  @keyframes slideIn {
+    from {
+      opacity: 0;
+      transform: translateX(100px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
 
-html,
-body,
-#root {
-  width: 100%;
-  height: 100%;
-  margin: 0;
-  padding: 0;
-}
-
-h1 {
-  font-size: 4em;
-  margin: 0;
-}
-
-h2 {
-  font-size: 2.5em;
-  margin: 0;
-}
-
-h3 {
-  font-size: 1.8em;
-  margin: 0;
-}
-
-button {
-  border: none;
-  outline: none;
-  font-family: inherit;
+  .animate-slideIn {
+    animation: slideIn 0.5s ease-out;
+  }
 }
