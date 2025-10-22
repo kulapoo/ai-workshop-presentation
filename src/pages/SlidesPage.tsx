@@ -6,8 +6,8 @@ import {
   Slide01_Title,
   Slide02_Agenda,
   Slide03_RiseOfAI,
-  Slide04_AgenticAI,
-  Slide05_AutonomySpectrum,
+  Slide04_AutonomySpectrum,
+  Slide05_AgenticAI,
   Slide06_Components,
   Slide07_AIAssistedDev,
   Slide08_Benefits,
@@ -32,8 +32,8 @@ export const SlidesPage = () => {
       <Slide01_Title isActive={currentSlide === 1} />
       <Slide02_Agenda isActive={currentSlide === 2} />
       <Slide03_RiseOfAI isActive={currentSlide === 3} />
-      <Slide04_AgenticAI isActive={currentSlide === 4} />
-      <Slide05_AutonomySpectrum isActive={currentSlide === 5} />
+      <Slide04_AutonomySpectrum isActive={currentSlide === 4} />
+      <Slide05_AgenticAI isActive={currentSlide === 5} />
       <Slide06_Components isActive={currentSlide === 6} />
       <Slide07_AIAssistedDev isActive={currentSlide === 7} />
       <Slide08_Benefits isActive={currentSlide === 8} />

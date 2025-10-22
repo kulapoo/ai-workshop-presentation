@@ -2,8 +2,8 @@
 export { Slide01_Title } from './Slide01_Title';
 export { Slide02_Agenda } from './Slide02_Agenda';
 export { Slide03_RiseOfAI } from './Slide03_Intro';
-export { Slide04_AgenticAI } from './Slide04_AgenticAI';
-export { Slide05_AutonomySpectrum } from './Slide05_AutonomySpectrum';
+export { Slide04_AutonomySpectrum } from './Slide04_AutonomySpectrum';
+export { Slide05_AgenticAI } from './Slide05_AgenticAI';
 export { Slide06_Components } from './Slide06_Components';
 export { Slide07_AIAssistedDev } from './Slide07_AIAssistedDev';
 export { Slide08_Benefits } from './Slide08_Benefits';

@@ -48,4 +48,5 @@ export interface DevTool {
   type: string;
   features: string;
   free: string;
+  link?: string;
 }

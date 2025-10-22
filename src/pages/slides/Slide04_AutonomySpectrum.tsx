@@ -2,7 +2,7 @@ import type { SlideProps } from '../../types';
 import { Slide } from '../../components/layout/Slide/Slide';
 import { SpectrumItem } from '../../components/SpectrumItem/SpectrumItem';
 
-export const Slide05_AutonomySpectrum: React.FC<SlideProps> = ({ isActive }) => {
+export const Slide04_AutonomySpectrum: React.FC<SlideProps> = ({ isActive }) => {
   return (
     <Slide isActive={isActive}>
       <h2 className="slide-title">AI Autonomy Spectrum</h2>

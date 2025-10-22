@@ -11,13 +11,15 @@ export const Slide13_DevTools: React.FC<SlideProps> = ({ isActive }) => {
       type: 'Protocol',
       features: 'Tool connectivity, Context bridging',
       free: 'yes',
+      link: 'https://modelcontextprotocol.io/',
     },
     {
       name: 'Claude Code',
       aiModel: 'Anthropic',
       type: 'CLI Agent',
-      features: 'Autonomous coding, Terminal-native',
+      features: 'Autonomous coding, Terminal-native, IDE extension',
       free: 'no',
+      link: 'https://docs.claude.com/claude-code',
     },
     {
       name: 'Aider',
@@ -25,6 +27,15 @@ export const Slide13_DevTools: React.FC<SlideProps> = ({ isActive }) => {
       type: 'CLI Agent',
       features: 'Git integration, Pair programming',
       free: 'partial',
+      link: 'https://aider.chat/',
+    },
+    {
+      name: 'Gemini CLI',
+      aiModel: 'Gemini',
+      type: 'CLI Agent',
+      features: 'Autonomous coding, Terminal-native',
+      free: 'partial',
+      link: 'https://ai.google.dev/gemini-api/docs/cli',
     },
     {
       name: 'Continue',
@@ -32,6 +43,7 @@ export const Slide13_DevTools: React.FC<SlideProps> = ({ isActive }) => {
       type: 'IDE Extension',
       features: 'Local models, Custom prompts',
       free: 'yes',
+      link: 'https://continue.dev/',
     },
     {
       name: 'Cline',
@@ -39,6 +51,7 @@ export const Slide13_DevTools: React.FC<SlideProps> = ({ isActive }) => {
       type: 'VS Code Ext',
       features: 'File operations, Shell commands',
       free: 'yes',
+      link: 'https://github.com/cline/cline',
     },
     {
       name: 'Windsurf',
@@ -46,6 +59,7 @@ export const Slide13_DevTools: React.FC<SlideProps> = ({ isActive }) => {
       type: 'IDE',
       features: 'Cascade flows, Agent & chat modes',
       free: 'yes',
+      link: 'https://codeium.com/windsurf',
     },
     {
       name: 'GitHub Copilot',
@@ -53,6 +67,7 @@ export const Slide13_DevTools: React.FC<SlideProps> = ({ isActive }) => {
       type: 'IDE Plugin',
       features: 'Inline suggestions, Chat interface',
       free: 'no',
+      link: 'https://github.com/features/copilot',
     },
     {
       name: 'Ollama',
@@ -60,6 +75,7 @@ export const Slide13_DevTools: React.FC<SlideProps> = ({ isActive }) => {
       type: 'Local Server',
       features: 'Privacy-first, No internet required',
       free: 'yes',
+      link: 'https://ollama.com/',
     },
   ];
 
@@ -75,6 +91,7 @@ export const Slide13_DevTools: React.FC<SlideProps> = ({ isActive }) => {
               <th className="p-4 text-left text-lg">Type</th>
               <th className="p-4 text-left text-lg">Key Features</th>
               <th className="p-4 text-left text-lg">Free</th>
+              <th className="p-4 text-left text-lg">Links</th>
             </tr>
           </thead>
           <tbody>
@@ -96,6 +113,18 @@ export const Slide13_DevTools: React.FC<SlideProps> = ({ isActive }) => {
                       <Check size={20} className="text-green-600" />
                       <span className="text-sm">*</span>
                     </span>
+                  )}
+                </td>
+                <td className="py-3 px-4 border-b border-gray-200 text-base text-gray-600">
+                  {tool.link && (
+                    <a
+                      href={tool.link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-blue-600 hover:text-blue-800 underline"
+                    >
+                      Visit
+                    </a>
                   )}
                 </td>
               </tr>

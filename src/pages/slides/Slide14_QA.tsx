@@ -11,9 +11,6 @@ export const Slide14_QA: React.FC<SlideProps> = ({ isActive }) => {
           <HelpCircle size={128} className="text-[#667eea]" />
         </div>
         <h3>Questions & Discussion</h3>
-        <p style={{ fontSize: '1.5em', marginTop: '30px' }}>
-          Let's explore your questions about AI Engineering, Agentic AI, and Prompt Engineering
-        </p>
       </div>
     </Slide>
   );
