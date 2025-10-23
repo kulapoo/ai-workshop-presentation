@@ -3,7 +3,7 @@ import { Slide } from '../../components/layout/Slide/Slide';
 import { FrameworkSection } from '../../components/FrameworkSection/FrameworkSection';
 import { BookOpen, Link, Lightbulb, Rocket } from 'lucide-react';
 
-export const Slide15_ThankYou: React.FC<SlideProps> = ({ isActive }) => {
+export const Slide16_ThankYou: React.FC<SlideProps> = ({ isActive }) => {
   return (
     <Slide isActive={isActive}>
       <h2 className="slide-title">Thank You!</h2>

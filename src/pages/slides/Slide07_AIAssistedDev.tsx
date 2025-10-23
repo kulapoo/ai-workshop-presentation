@@ -1,7 +1,6 @@
 import type { SlideProps } from '../../types';
 import { Slide } from '../../components/layout/Slide/Slide';
 import { SpectrumItem } from '../../components/SpectrumItem/SpectrumItem';
-import { TechniqueBox } from '../../components/TechniqueBox/TechniqueBox';
 import { Target, Bot } from 'lucide-react';
 
 export const Slide07_AIAssistedDev: React.FC<SlideProps> = ({ isActive }) => {
@@ -30,13 +29,6 @@ export const Slide07_AIAssistedDev: React.FC<SlideProps> = ({ isActive }) => {
           Multi-step task execution
         </p>
       </div>
-      <TechniqueBox title="Demo Examples:">
-        <ul>
-          <li>Generate expense tracker from scratch</li>
-          <li>Enhance "Experience Maldives" application</li>
-          <li>Developer agent vs System analyst agent</li>
-        </ul>
-      </TechniqueBox>
     </Slide>
   );
 };

@@ -2,7 +2,7 @@ import type { SlideProps } from '../../types';
 import { Slide } from '../../components/layout/Slide/Slide';
 import { HelpCircle } from 'lucide-react';
 
-export const Slide14_QA: React.FC<SlideProps> = ({ isActive }) => {
+export const Slide15_QA: React.FC<SlideProps> = ({ isActive }) => {
   return (
     <Slide isActive={isActive}>
       <h2 className="slide-title">Q&A</h2>

@@ -12,5 +12,6 @@ export { Slide10_TCREI } from './Slide10_TCREI';
 export { Slide11_CoreTechniques } from './Slide11_CoreTechniques';
 export { Slide12_PromptExamples } from './Slide12_PromptExamples';
 export { Slide13_DevTools } from './Slide13_DevTools';
-export { Slide14_QA } from './Slide14_QA';
-export { Slide15_ThankYou } from './Slide15_ThankYou';
+export { Slide14_MCP } from './Slide14_MCP';
+export { Slide15_QA } from './Slide15_QA';
+export { Slide16_ThankYou } from './Slide16_ThankYou';

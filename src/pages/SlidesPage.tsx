@@ -16,11 +16,12 @@ import {
   Slide11_CoreTechniques,
   Slide12_PromptExamples,
   Slide13_DevTools,
-  Slide14_QA,
-  Slide15_ThankYou,
+  Slide14_MCP,
+  Slide15_QA,
+  Slide16_ThankYou,
 } from './slides';
 
-const TOTAL_SLIDES = 15;
+const TOTAL_SLIDES = 16;
 
 export const SlidesPage = () => {
   const { currentSlide, totalSlides, nextSlide, previousSlide } = useSlideNavigation(TOTAL_SLIDES);
@@ -42,8 +43,9 @@ export const SlidesPage = () => {
       <Slide11_CoreTechniques isActive={currentSlide === 11} />
       <Slide12_PromptExamples isActive={currentSlide === 12} />
       <Slide13_DevTools isActive={currentSlide === 13} />
-      <Slide14_QA isActive={currentSlide === 14} />
-      <Slide15_ThankYou isActive={currentSlide === 15} />
+      <Slide14_MCP isActive={currentSlide === 14} />
+      <Slide15_QA isActive={currentSlide === 15} />
+      <Slide16_ThankYou isActive={currentSlide === 16} />
 
       <Navigation onPrevious={previousSlide} onNext={nextSlide} />
     </PresentationContainer>
