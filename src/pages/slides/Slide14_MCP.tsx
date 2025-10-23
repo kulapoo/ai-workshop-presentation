@@ -1,6 +1,8 @@
 import type { SlideProps } from '../../types';
 import { Slide } from '../../components/layout/Slide/Slide';
 import { Network, Download, Wrench, MessageSquare } from 'lucide-react';
+import mcpComparison from '../../assets/mcp-comparison.png';
+import mcpArchitecture from '../../assets/mcp-architecture.png';
 
 export const Slide14_MCP: React.FC<SlideProps> = ({ isActive }) => {
   return (
@@ -54,7 +56,7 @@ export const Slide14_MCP: React.FC<SlideProps> = ({ isActive }) => {
       </div>
 
       {/* MCP Primitives */}
-      <div>
+      <div className="mb-8">
         <h3 className="text-2xl font-bold mb-4 text-center text-gray-800">MCP Primitives</h3>
         <div className="grid grid-cols-3 gap-4">
           <div className="bg-gradient-to-br from-blue-100 to-blue-50 p-5 rounded-xl shadow-lg">
@@ -83,6 +85,26 @@ export const Slide14_MCP: React.FC<SlideProps> = ({ isActive }) => {
             <p className="text-sm text-gray-700 mb-2">Reusable prompt templates & workflows</p>
             <p className="text-sm text-gray-600"><strong>User-controlled</strong> - explicitly selected by users</p>
           </div>
+        </div>
+      </div>
+
+      {/* MCP Architecture & Comparison */}
+      <div className="grid grid-cols-2 gap-6">
+        <div className="bg-white p-4 rounded-xl shadow-lg">
+          <h3 className="text-lg font-bold mb-3 text-center text-gray-800">MCP Architecture</h3>
+          <img
+            src={mcpArchitecture}
+            alt="MCP Architecture showing MCP Host connecting to clients and servers"
+            className="w-full h-auto rounded-lg"
+          />
+        </div>
+        <div className="bg-white p-4 rounded-xl shadow-lg">
+          <h3 className="text-lg font-bold mb-3 text-center text-gray-800">Traditional vs MCP Approach</h3>
+          <img
+            src={mcpComparison}
+            alt="Comparison between traditional approach with 9 connections vs MCP approach with 6 connections"
+            className="w-full h-auto rounded-lg"
+          />
         </div>
       </div>
     </Slide>

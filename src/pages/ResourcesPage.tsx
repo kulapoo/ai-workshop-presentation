@@ -282,6 +282,11 @@ export const ResourcesPage = () => {
               <a href="https://github.blog/news-insights/research/" target="_blank" rel="noopener" className="text-blue-400 no-underline font-semibold transition-colors duration-200 self-start hover:text-indigo-400">Visit →</a>
             </div>
             <div className="bg-white/5 border border-white/10 rounded-xl p-6 transition-all duration-300 flex flex-col gap-2 hover:bg-white/8 hover:border-blue-400/30 hover:translate-x-2">
+              <h4 className="text-xl text-blue-400 m-0">Claude Code Best Practices</h4>
+              <p className="text-white/70 leading-relaxed m-0">Engineering best practices for using Claude Code effectively</p>
+              <a href="https://www.anthropic.com/engineering/claude-code-best-practices" target="_blank" rel="noopener" className="text-blue-400 no-underline font-semibold transition-colors duration-200 self-start hover:text-indigo-400">Visit →</a>
+            </div>
+            <div className="bg-white/5 border border-white/10 rounded-xl p-6 transition-all duration-300 flex flex-col gap-2 hover:bg-white/8 hover:border-blue-400/30 hover:translate-x-2">
               <h4 className="text-xl text-blue-400 m-0">Chip Huyen's Website</h4>
               <p className="text-white/70 leading-relaxed m-0">AI engineering insights, blog posts, and practical guidance</p>
               <a href="https://huyenchip.com/" target="_blank" rel="noopener" className="text-blue-400 no-underline font-semibold transition-colors duration-200 self-start hover:text-indigo-400">Visit →</a>
